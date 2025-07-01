@@ -1,0 +1,15 @@
+.next
+node_modules
+public
+build
+*.md
+*.sh
+.env*.local
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.log
+*.min.*
+*.tsbuildinfo
+.next
+out
