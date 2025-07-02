@@ -70,19 +70,52 @@ A modern, production-ready SaaS starter kit built with Next.js, TypeScript, Tail
 - `format`: Format code with Prettier
 - `format:check`: Check code formatting
 
-### Adding Components
+### 🧩 Adding Components
 
-Use the shadcn CLI to add new components:
+1. **UI Components (shadcn/ui)**
+   ```bash
+   npx shadcn@latest add [component-name]
+   ```
+   Example:
+   ```bash
+   npx shadcn@latest add button
+   npx shadcn@latest add card
+   npx shadcn@latest add form
+   ```
+   These will be added to `src/shared/components/ui/`
 
-```bash
-npx shadcn@latest add [component-name]
+2. **Feature Components**
+   Place feature-specific components in their respective feature directory:
+   ```
+   src/features/[feature-name]/components/
+   ```
+
+3. **Shared Components**
+   Place reusable components in:
+   ```
+   src/shared/components/
+   ```
+
+## 🏗️ Project Structure
+
+The project follows a feature-based architecture for better scalability and maintainability:
+
 ```
-
-Example:
-```bash
-npx shadcn@latest add button
-npx shadcn@latest add card
-npx shadcn@latest add form
+src/
+├── app/                      # Next.js App Router
+├── features/                 # Feature modules
+│   └── auth/                # Example: Auth feature
+│       ├── components/      # Feature components
+│       ├── hooks/           # Custom hooks
+│       ├── lib/             # Business logic
+│       ├── types/           # TypeScript types
+│       └── validations/     # Validation schemas
+└── shared/                  # Shared code
+    ├── components/          # Reusable components
+    │   └── ui/             # shadcn/ui components
+    ├── lib/                 # Shared utilities
+    ├── types/               # Shared types
+    └── utils/               # Helper functions
 ```
 
 ## 🎨 Theming

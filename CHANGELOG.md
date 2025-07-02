@@ -8,6 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Feature-based architecture implementation
+- Shared components and utilities structure
+- TypeScript path aliases for better imports
+- Base feature module structure with auth example
+
+### Changed
+- Restructured project to follow feature-based architecture
+- Moved UI components to shared directory
+- Updated TypeScript configuration with new path aliases
+- Improved code organization for better scalability
+
+## [0.2.0] - 2025-07-02
+
+### Added
 - Initial project setup with Next.js 14 and TypeScript
 - Tailwind CSS v4 integration with custom theming
 - shadcn/ui components library
