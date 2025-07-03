@@ -20,7 +20,8 @@ src/
 
 **Each feature MUST contain:**
 - `components/` - UI components
-- `hooks/` - Custom hooks  
+- `hooks/` - Custom hooks
+- `pages/` - Page components
 - `services/` - Business logic
 - `repositories/` - Data access
 - `types/` - TypeScript definitions
@@ -69,6 +70,12 @@ import './styles.css'
 ### Feature Backend Structure
 ```
 features/products/
+├── components/
+├── hooks/
+├── pages/
+│   ├── ProductsPage.tsx
+│   ├── ProductDetailPage.tsx
+│   └── index.ts
 ├── services/
 │   └── product-service.ts    # Business logic
 ├── repositories/
@@ -250,6 +257,10 @@ const handleSubscribe = async () => {
 // Components
 export { ExampleForm } from './components/ExampleForm'
 
+// Pages
+export { default as ExamplePage } from './pages/ExamplePage'
+export { default as ExampleDetailPage } from './pages/ExampleDetailPage'
+
 // Hooks
 export { useExample } from './hooks/use-example'
 
@@ -261,6 +272,28 @@ export type { Example } from './types/example'
 
 // Validations
 export { exampleSchema } from './validations/example-schema'
+```
+
+### Page Export Pattern
+
+```typescript
+// features/products/pages/ProductsPage.tsx
+import { ProductList } from '../components/ProductList';
+
+export default function ProductsPage() {
+  return (
+    <div>
+      <ProductList />
+    </div>
+  );
+}
+```
+
+```typescript
+// app/products/page.tsx
+import { ProductsPage } from '@/features/products'
+
+export default ProductsPage
 ```
 
 ## 🔧 STATE MANAGEMENT
@@ -331,19 +364,21 @@ export type ExampleInput = z.infer<typeof exampleSchema>
 ## 📁 FILE NAMING
 
 - Components: `PascalCase.tsx`
+- Pages: `PascalCase.tsx` (default export)
 - Hooks: `use-kebab-case.ts`
 - Services: `kebab-case-service.ts`
 - Repositories: `kebab-case-repository.ts`
 - Utils: `kebab-case.ts`
 - Types: `kebab-case.ts`
 - API routes: `route.ts`
-- Pages: `page.tsx`
+- App routes: `page.tsx`
 
 ## 🔄 BACKEND PRINCIPLES
 
 - **API routes** chỉ làm routing, delegate logic cho services
 - **Services** chứa business logic, không trực tiếp access DB
 - **Repositories** handle DB operations, return domain objects
+- **Pages** export từ features, import trong app routes
 - **Validation** ở API layer, reuse schemas
 - **Error handling** sử dụng `handleApiError()` cho consistency
 

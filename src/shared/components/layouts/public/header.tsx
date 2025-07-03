@@ -1,7 +1,5 @@
-'use client';
-
-import Link from 'next/link';
-import { Button } from '@/shared/components/ui/button';
+import Link from "next/link";
+import { Button } from "@/shared/components/ui/button";
 
 export function PublicHeader() {
   return (
@@ -10,7 +8,7 @@ export function PublicHeader() {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6 md:gap-10">
           <Link href="/" className="flex items-center space-x-2">
-            <span className="font-bold text-xl">SaaS Starter</span>
+            <span className="font-bold text-xl">App name</span>
           </Link>
           <nav className="hidden md:flex gap-6">
             <Link
@@ -40,6 +38,9 @@ export function PublicHeader() {
           </Button>
           <Button asChild>
             <Link href="/signup">Get started</Link>
+          </Button>
+          <Button asChild>
+            <Link href="/dashboard">Dashboard</Link>
           </Button>
         </div>
       </div>
