@@ -12,8 +12,15 @@ import {
 import { DASHBOARD_MENU } from "@/shared/constants/router";
 import Link from "next/link";
 import { LayoutDashboardIcon } from "lucide-react";
+import { ProfileDropdown } from "@/features/auth";
 
 export function DashboardSidebar() {
+  const user = {
+    name: "John Doe",
+    email: "6Kt0P@example.com",
+    avatar: "https://github.com/brunorocha.png",
+  };
+
   return (
     <Sidebar collapsible="icon" variant="floating">
       <SidebarHeader>
@@ -46,7 +53,13 @@ export function DashboardSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter />
+      <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <ProfileDropdown user={user} side="right" />
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   );
 }
